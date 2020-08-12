@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { SafeAreaView, ScrollView, View, Text, Button } from 'react-native';
-import { version } from '../../package.json';
+import { version } from '../../../package.json';
 
 class ErrorBoundary extends Component {
   constructor(props) {

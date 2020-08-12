@@ -2,12 +2,12 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components/native';
 import { PersistGate } from 'redux-persist/integration/react';
+import { SafeAreaView, PermissionsAndroid } from 'react-native';
 
-import { store, persister } from 'store/configureStore';
-import Themes, { SUPPORTED_THEMES } from 'themes/index';
-
-import { SafeAreaView, ScrollView, View, Text, PermissionsAndroid } from 'react-native';
-import ErrorBoundary from './containers/ErrorBoundary';
+import { store, persistor } from '@services/state/configureStore';
+import Themes, { SUPPORTED_THEMES } from '@themes/';
+import ErrorBoundary from '@containers/ErrorBoundary';
+import Home from '@containers/Home';
 
 const PERMISSIONS = [];
 
@@ -48,15 +48,11 @@ const EntryPoint = () => {
 
   return (
     <Provider store={store}>
-      <PersistGate persistor={persister}>
+      <PersistGate persistor={persistor}>
         <ThemeProvider theme={Themes.getTheme(SUPPORTED_THEMES.LIGHT)}>
           <ErrorBoundary>
             <SafeAreaView>
-              <ScrollView contentInsetAdjustmentBehavior="automatic">
-                <View>
-                  <Text>Hello World</Text>
-                </View>
-              </ScrollView>
+              <Home />
             </SafeAreaView>
           </ErrorBoundary>
         </ThemeProvider>

@@ -11,16 +11,16 @@ const fontWeight = {
 
 const fontFamily = {
   Medium: {
-    Type: 'Poppins-Medium',
+    Type: "'Museo Sans 500'",
     Weight: fontWeight.Medium,
   },
   SemiBold: {
-    Type: 'Poppins-SemiBold',
-    Weight: fontWeight.SemiBold,
+    Type: "'Museo Sans 700'",
+    Weight: fontWeight.Bold,
   },
   Bold: {
-    Type: 'Poppins-Bold',
-    Weight: fontWeight.SemiBold,
+    Type: "'Museo Sans 900'",
+    Weight: fontWeight.ExtraBlack,
   },
 };
 

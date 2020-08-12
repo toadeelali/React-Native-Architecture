@@ -1,9 +1,9 @@
 import AsyncStorage from '@react-native-community/async-storage';
 import { compose, createStore, applyMiddleware } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
-import { composeWithDevTools } from 'redux-devtools-extension';
 import { ENV } from '@env';
 import RootReducer from './reducers';
 
@@ -30,8 +30,9 @@ if (ENV !== 'production') {
 }
 
 const store = createStore(persistedReducer, composeEnhancers(applyMiddleware(...middleware)));
-const persister = persistStore(store);
+const persistor = persistStore(store);
 
-export const purgeStore = () => persister.purge();
+/* ------------- Clean all saved data ----------- */
+export const purgeStore = () => persistor.purge();
 
-export { store, persister };
+export { store, persistor };

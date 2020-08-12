@@ -9,24 +9,11 @@
     "eslint-plugin-react"
   ],
   "rules": {
-    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
-    "import/prefer-default-export": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "react/prefer-stateless-function": [0],
-    "react/jsx-indent": [0],
-    "react/sort-comp": [0],
-    "react/destructuring-assignment": [0],
-    "react/forbid-prop-types": [0],
-    "react/no-unescaped-entities": ["error", { "forbid": [">", "}"] }],
-    "quotes": [
-      "error",
-      "single",
-      { "avoidEscape": true, "allowTemplateLiterals": false }
-    ],
-    "jsx-quotes": ["error", "prefer-double"],
-    "camelcase": "off",
-    "no-use-before-define": "off",
-    "semi": ["error", "always"],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+    "react/forbid-prop-types": [0, { "forbid": ["any"] }],
+    "react/prop-types": 0,
+    "no-console": "off",
+    "no-plusplus": "off",
     "prettier/prettier": [
       "error",
       {
@@ -35,7 +22,8 @@
         "jsxSingleQuote": false,
         "printWidth": 120,
         "semi": true,
-        "jsxBracketSameLine": true
+        "jsxBracketSameLine": true,
+        "bracketSpacing": true
       }
     ]
   },
