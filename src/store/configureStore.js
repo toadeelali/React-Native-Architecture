@@ -4,7 +4,7 @@ import { persistStore, persistReducer } from 'redux-persist';
 import thunk from 'redux-thunk';
 
 import { composeWithDevTools } from 'redux-devtools-extension';
-// import { ENV } from '@env';
+import { ENV } from '@env';
 import RootReducer from './reducers';
 
 /* ------------- Redux Configuration ------------- */
@@ -22,12 +22,12 @@ const persistedReducer = persistReducer(persistConfig, RootReducer);
 /* ------------- Redux Development Tools ----------- */
 let composeEnhancers = compose;
 
-// if (ENV !== 'production') {
 // Remote Redux Devtools
-composeEnhancers = composeWithDevTools({
-  name: 'RN Architecture',
-});
-// }
+if (ENV !== 'production') {
+  composeEnhancers = composeWithDevTools({
+    name: 'RN Architecture',
+  });
+}
 
 const store = createStore(persistedReducer, composeEnhancers(applyMiddleware(...middleware)));
 const persister = persistStore(store);
