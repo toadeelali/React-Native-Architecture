@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { SafeAreaView, ScrollView, View, Text, Button } from 'react-native';
+import { ScrollView} from 'react-native';
 import { version } from '../../../package.json';
+import { BodyMedium, Button, Page, SafeAreaView, Paper } from '@components/core/';
 
 class ErrorBoundary extends Component {
   constructor(props) {
@@ -25,12 +26,14 @@ class ErrorBoundary extends Component {
     if (this.state.hasError) {
       return (
         <SafeAreaView>
-          <ScrollView contentInsetAdjustmentBehavior="automatic">
-            <View>
-              <Text>An error occurred v{version}</Text>
-              <Button title="Restart" onPress={this.restartApp} />
-            </View>
-          </ScrollView>
+          <Page>
+            <ScrollView contentInsetAdjustmentBehavior="automatic">
+              <Paper>
+                <BodyMedium>An error occurred v{version}</BodyMedium>
+                <Button title="Restart" onPress={this.restartApp} />
+              </Paper>
+            </ScrollView>
+          </Page>
         </SafeAreaView>
       );
     }

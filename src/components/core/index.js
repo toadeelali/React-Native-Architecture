@@ -1,5 +1,5 @@
-export * from './Button';
-export * from './Text';
-export * from './TextInput';
-export * from './View';
-export * from './Image';
+export * from "./Button"
+export * from "./Text"
+// export * from "./TextInput"
+export * from "./View"
+// export * from "./Image"

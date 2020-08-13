@@ -1,14 +1,14 @@
 import React from 'react';
-import { BodyMedium } from '@components/core/Text';
-import { Button } from '@components/core/Button';
-import { Page } from '@components/core/View';
+import { BodyMedium, Button, Page, SafeAreaView } from '@components/core/';
 
 const Home = () => {
   return (
-    <Page>
-      <BodyMedium>Hello World</BodyMedium>
-      <Button title="Restart" onPress={() => { }} />
-    </Page>
+    <SafeAreaView>
+      <Page>
+        <BodyMedium>Hello World</BodyMedium>
+        <Button title="Start" onPress={(e) => { }} />
+      </Page>
+    </SafeAreaView>
   );
 };
 
