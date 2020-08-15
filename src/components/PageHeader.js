@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { ThemeContext } from 'styled-components/native';
 
-import { Row, H1, BodyMedium, IconTextButton } from '@components/core/';
+import { Row, H1, BodyMedium, IconTextButton } from 'components/core/';
 
 export const PageHeader = (props) => {
   const themeContext = useContext(ThemeContext);
@@ -12,7 +12,7 @@ export const PageHeader = (props) => {
     {
       props.topButton && <Row>
         <IconTextButton
-          source={require('@assets/images/arrow-left.png')}
+          source={require('assets/images/arrow-left.png')}
           onPress={props.topButtonCb}
           title={props.topButton}
           color={colorSecondary.main} />

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView} from 'react-native';
+import { ScrollView } from 'react-native';
 import { version } from '../../../package.json';
 import { BodyMedium, Button, Page, SafeAreaView, Paper } from '@components/core/';
 

@@ -1,15 +1,21 @@
 import React from 'react';
-import { BodyMedium, Button, Page, SafeAreaView } from '@components/core/';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-const Home = () => {
+import CameraView from 'containers/Camera';
+import Home from './Home';
+
+const MainStack = createStackNavigator();
+
+const MainStackNav = () => {
   return (
-    <SafeAreaView>
-      <Page>
-        <BodyMedium>Hello World</BodyMedium>
-        <Button title="Start" onPress={(e) => { }} />
-      </Page>
-    </SafeAreaView>
+    <NavigationContainer>
+      <MainStack.Navigator>
+        <MainStack.Screen name="Home" component={Home} />
+        <MainStack.Screen name="Camera" component={CameraView} />
+      </MainStack.Navigator>
+    </NavigationContainer>
   );
 };
 
-export default Home;
+export default MainStackNav;

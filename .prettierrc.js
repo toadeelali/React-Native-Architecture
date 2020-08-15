@@ -6,5 +6,4 @@ module.exports = {
   "semi": true,
   "jsxBracketSameLine": true,
   "bracketSpacing": true,
-  parser: 'babylon',
 };

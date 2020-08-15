@@ -1,59 +1,22 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components/native';
 import { PersistGate } from 'redux-persist/integration/react';
-import { PermissionsAndroid } from 'react-native';
 
-import { store, persistor } from '@services/state/configureStore';
-import Themes, { SUPPORTED_THEMES } from '@themes/';
+import { store, persistor } from 'services/state/configureStore';
+import themes, { SUPPORTED_THEMES } from 'themes';
 import ErrorBoundary from '@containers/ErrorBoundary';
 import Home from '@containers/Home';
 
-const PERMISSIONS = [];
-
-const EntryPoint = () => {
-  const [stateRef, setStateRef] = useState({
-    grantedPermissions: {},
-  });
-
-  // componentDidMount
+export default function EntryPoint() {
   useEffect(() => {
-    checkPermissions(PERMISSIONS);
-  }, [checkPermissions]);
-
-  // componentDidUpdate
-  useEffect(() => {
-    const { grantedPermissions } = stateRef;
-
-    const deniedPermissions = PERMISSIONS.filter(
-      (permission) => grantedPermissions[permission] !== PermissionsAndroid.RESULTS.GRANTED
-    );
-
-    if (deniedPermissions.length > 0) {
-      checkPermissions(deniedPermissions);
-    }
-  }, [checkPermissions, stateRef]);
-
-  const checkPermissions = useCallback(
-    async (permissions) => {
-      try {
-        const grantedPermissions = await PermissionsAndroid.requestMultiple(permissions);
-        setStateRef({ ...stateRef, grantedPermissions });
-      } catch (error) {
-        setStateRef({ ...stateRef, grantedPermissions: error });
-      }
-    },
-    [stateRef]
-  );
-
-  useEffect(() => {
-    console.log(Themes.getTheme(SUPPORTED_THEMES.LIGHT));
+    console.log(themes.getTheme(SUPPORTED_THEMES.LIGHT));
   }, []);
 
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        <ThemeProvider theme={Themes.getTheme(SUPPORTED_THEMES.LIGHT)}>
+        <ThemeProvider theme={themes.getTheme(SUPPORTED_THEMES.LIGHT)}>
           <ErrorBoundary>
             <Home />
           </ErrorBoundary>
@@ -61,6 +24,4 @@ const EntryPoint = () => {
       </PersistGate>
     </Provider>
   );
-};
-
-export default EntryPoint;
+}
